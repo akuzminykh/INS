@@ -1,0 +1,85 @@
+:concept_with_name a rdfs:Class .
+
+:has_name a rdf:Property .
+:has_name rdfs:domain :concept_with_name .
+:has_name rdfs:range rdfs:Literal .
+
+:type rdfs:subClassOf :concept_with_name .
+
+:concept_with_type a rdfs:Class .
+
+:has_type a rdf:Property .
+:has_type rdfs:domain :concept_with_type .
+:has_type rdfs:range :type .
+
+:pokemon rdfs:subClassOf :concept_with_name .
+:pokemon rdfs:subClassOf :concept_with_type .
+
+:character rdfs:subClassOf :concept_with_name .
+
+:trainer rdfs:subClassOf :character .
+
+:ability rdfs:subClassOf :concept_with_name .
+:ability rdfs:subClassOf :concept_with_type .
+
+:evolves_into a rdfs:Property .
+:evolves_into rdfs:domain :pokemon .
+:evolves_into rdfs:range :pokemon .
+
+:has_ability a rdfs:Property .
+:has_ability rdfs:domain :pokemon .
+:has_ability rdfs:range :ability .
+
+:has_pokemon a rdfs:Property .
+:has_pokemon rdfs:domain :trainer .
+:has_pokemon rdfs:range :pokemon .
+
+:counters a rdfs:Property .
+:counters rdfs:domain :type .
+:counters rdfs:range :type .
+
+:mitigates rdfs:subPropertyOf :counters .
+
+:nullifies rdfs:subPropertyOf :counters .
+
+:reflects rdfs:subPropertyOf :counters .
+
+:has_strength a rdfs:Property .
+:has_strength rdfs:domain :ability .
+:has_strength rdfs:range rdfs:Literal .
+
+:has_cost a rdfs:Property .
+:has_cost rdfs:domain :ability .
+:has_cost rdfs:range  rdfs:Literal .
+
+
+
+
+:ash_ketchum a :trainer .
+:ash_ketchum :has_name "Ash Ketchum" .
+
+:pikachu a :pokemon .
+:pikachu :has_name "Pikachu" .
+:pikachu :has_type :lightning .
+
+:squirtle a :pokemon .
+:squirtle :has_name "Squirtle" .
+:squirtle :has_type :water .
+
+:lighning a :type .
+:lighning :has_name "Lighning" .
+
+:water a :type .
+:water :has_name "Water" .
+
+:lighning :counters :water .
+
+:pikachu :evolves_into :raichu .
+
+:lightning_strike a :ability .
+:lightning_strike :has_name "Lightning Strike" .
+:lightning_strike :has_type :lightning .
+:lightning_strike :has_strength "10" .
+:lightning_strike :has_cost "5" .
+
+:pikachu :has_ability :lighning_strike .

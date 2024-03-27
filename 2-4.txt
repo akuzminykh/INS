@@ -1,0 +1,49 @@
+2)
+
+:library a schema:organization .
+
+:contains a rdf:property .
+:contains rdfs:domain :library .
+:contains rdfs:range schema:book .
+
+:borrows a rdf:property .
+:borrows rdfs:domain schema:person .
+:borrows rdfs:range schema:book .
+
+---
+
+Was ist nicht ausdrückbar?
+- Dass :library "thousands of books" beinhaltet
+	- Vielleicht kann man spezifischer sein, indem man ein Bag benutzt
+- Dass schema:book mindestens einen Autor hat
+- Dass Bücher von genau einer Person ausgeliehen werden können
+- Dass Sachen wie "title", "name", "phone number" usw. vorhanden sein müssen
+
+
+3)
+
+a)
+:Daisy :enrolledAt :HS_HANNOVER .
+:enrolledAt rdfs:domain :Student .
+-> (rdfs2)
+:Daisy a :Student .
+
+:Daisy a :Student .
+:Student rdfs:subClassOf :Person .
+-> (rdfs9)
+:Daisy a :Person .
+
+b)
+{
+(:Donald, :LeibnizUni),
+(:Daisy, :HS_HANNOVER)
+}
+
+
+4)
+
+a)
+Bei :Father müsste es rdfs:subClassOf sein
+
+b)
+Autor von Koch- UND Märchenbüchern erzwungen
